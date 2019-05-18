@@ -8,4 +8,9 @@ public class ImplementationB1 implements InterfaceB {
     public ImplementationB1(InterfaceD d) {
         this.d = d;
     }
+
+    @Override
+    public boolean equals(Object o){
+        return o instanceof ImplementationB1 && ((ImplementationB1)o).d.equals(d);
+    }
 }

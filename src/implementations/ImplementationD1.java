@@ -10,10 +10,6 @@ public class ImplementationD1 implements InterfaceD {
 
     @Override
     public boolean equals(Object o){
-        if(o instanceof ImplementationD1){
-            return ((ImplementationD1)o).i == this.i;
-        }
-        return false;
-
+        return o instanceof ImplementationD1 && ((ImplementationD1)o).i == i;
     }
 }

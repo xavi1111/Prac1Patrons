@@ -11,4 +11,9 @@ public class ImplementationA1 implements InterfaceA {
         this.b = b;
         this.c = c;
     }
+
+    @Override
+    public boolean equals(Object o){
+        return o instanceof ImplementationA1 && ((ImplementationA1)o).b.equals(b) && ((ImplementationA1)o).c.equals(c);
+    }
 }

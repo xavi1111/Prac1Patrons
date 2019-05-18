@@ -7,4 +7,9 @@ public class ImplementationC1 implements InterfaceC {
     public ImplementationC1(String s){
         this.s= s;
     }
+
+    @Override
+    public boolean equals(Object o){
+        return o instanceof ImplementationC1 && ((ImplementationC1)o).s == s;
+    }
 }
