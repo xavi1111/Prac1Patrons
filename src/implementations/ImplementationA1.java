@@ -1,8 +1,8 @@
-package servicelocator;
+package implementations;
 
-import Interfaces.InterfaceA;
-import Interfaces.InterfaceB;
-import Interfaces.InterfaceC;
+import interfaces.InterfaceA;
+import interfaces.InterfaceB;
+import interfaces.InterfaceC;
 
 public class ImplementationA1 implements InterfaceA {
     private	InterfaceB	b;

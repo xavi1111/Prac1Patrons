@@ -1,7 +1,8 @@
 package servicelocator;
 
-import Interfaces.InterfaceB;
-import Interfaces.InterfaceC;
+import interfaces.InterfaceB;
+import interfaces.InterfaceC;
+import implementations.ImplementationA1;
 
 public class FactoryA1 implements Factory {
     @Override

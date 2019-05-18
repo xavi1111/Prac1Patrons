@@ -1,5 +1,7 @@
 package servicelocator;
 
+import implementations.ImplementationC1;
+
 public class FactoryC1 implements Factory {
     @Override
     public ImplementationC1 create(ServiceLocator sl) throws LocatorError {

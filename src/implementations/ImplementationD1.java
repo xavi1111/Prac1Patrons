@@ -1,6 +1,6 @@
-package servicelocator;
+package implementations;
 
-import Interfaces.InterfaceD;
+import interfaces.InterfaceD;
 
 public class ImplementationD1 implements InterfaceD {
     private int i;
