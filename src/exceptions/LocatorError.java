@@ -1,4 +1,4 @@
-package servicelocator;
+package exceptions;
 
 public class LocatorError extends Exception {
     public LocatorError(ClassCastException ex) {

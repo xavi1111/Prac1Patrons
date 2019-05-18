@@ -1,6 +1,9 @@
-package servicelocator;
+package servicelocator.factories;
 
 import implementations.ImplementationD1;
+import servicelocator.interfaces.Factory;
+import exceptions.LocatorError;
+import servicelocator.interfaces.ServiceLocator;
 
 public class FactoryD1 implements Factory {
     @Override

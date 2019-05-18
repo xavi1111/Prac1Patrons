@@ -1,5 +1,9 @@
 package servicelocator;
 
+import exceptions.LocatorError;
+import servicelocator.interfaces.Factory;
+import servicelocator.interfaces.ServiceLocator;
+
 import java.util.HashMap;
 import java.util.Map;
 

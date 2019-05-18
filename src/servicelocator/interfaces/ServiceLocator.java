@@ -1,5 +1,7 @@
-package servicelocator;
+package servicelocator.interfaces;
 
+
+import exceptions.LocatorError;
 
 public interface ServiceLocator {
 
