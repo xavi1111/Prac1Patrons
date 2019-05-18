@@ -28,7 +28,7 @@ public class SimpleServiceLocator implements ServiceLocator {
     public Object getObject(String name) throws LocatorError {
         if(serviceMap.containsKey(name))
             return serviceMap.get(name).create(this);
-        else  if(constantMap.containsKey(name))
+        else if(constantMap.containsKey(name))
             return constantMap.get(name);
         else
             throw new LocatorError();
