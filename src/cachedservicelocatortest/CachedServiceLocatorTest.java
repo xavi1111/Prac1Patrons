@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class CachedServiceLocatorTest {
 
     private CachedServiceLocator csl;
+    private CachedServiceLocator csl2;
+
     private FactoryA1 factoryA1;
     private FactoryB1 factoryB1;
     private FactoryC1 factoryC1;
@@ -32,6 +34,13 @@ class CachedServiceLocatorTest {
         csl.setService("D", factoryD1);
         csl.setConstant("I", 1);
         csl.setConstant("S", "test");
+        csl2 = new CachedServiceLocator();
+        csl2.setService("A", factoryA1);
+        csl2.setService("B", factoryB1);
+        csl2.setService("C", factoryC1);
+        csl2.setService("D", factoryD1);
+        csl2.setConstant("I", 10);
+        csl2.setConstant("S", "test2");
     }
 
     @Test
@@ -64,5 +73,19 @@ class CachedServiceLocatorTest {
         assertSame(csl.getObject("B"), csl.getObject("B"));
         assertSame(csl.getObject("C"), csl.getObject("C"));
         assertSame(csl.getObject("D"), csl.getObject("D"));
+    }
+
+    @Test
+    void getObjectDifferent() throws LocatorError {
+        assertNotEquals(csl.getObject("A"), csl2.getObject("B"));
+        assertNotEquals(csl.getObject("A"), csl2.getObject("C"));
+        assertNotEquals(csl.getObject("A"), csl2.getObject("D"));
+        assertNotEquals(csl.getObject("B"), csl2.getObject("C"));
+        assertNotEquals(csl.getObject("B"), csl2.getObject("D"));
+        assertNotEquals(csl.getObject("C"), csl2.getObject("D"));
+        assertNotSame(csl.getObject("A"), csl2.getObject("A"));
+        assertNotSame(csl.getObject("B"), csl2.getObject("B"));
+        assertNotSame(csl.getObject("C"), csl2.getObject("C"));
+        assertNotSame(csl.getObject("D"), csl2.getObject("D"));
     }
 }
