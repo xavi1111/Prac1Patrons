@@ -1,9 +1,6 @@
 package simpleservicelocatortest;
 
 import exceptions.LocatorError;
-import implementations.ImplementationA1;
-import implementations.ImplementationB1;
-import implementations.ImplementationD1;
 import interfaces.InterfaceA;
 import interfaces.InterfaceB;
 import interfaces.InterfaceC;
@@ -15,8 +12,6 @@ import servicelocator2.factories.FactoryA1;
 import servicelocator2.factories.FactoryB1;
 import servicelocator2.factories.FactoryC1;
 import servicelocator2.factories.FactoryD1;
-import servicelocator2.interfaces.Factory;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleServiceLocator2Test {
