@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class SimpleServiceLocator implements ServiceLocator {
 
-    private Map<Object, Factory> serviceMap = new HashMap<>();
-    private Map<Object, Object> constantMap = new HashMap<>();
+    private Map<Class, Factory> serviceMap = new HashMap<>();
+    private Map<Class, Object> constantMap = new HashMap<>();
 
 
     @Override

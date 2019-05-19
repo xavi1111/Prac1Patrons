@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CachedServiceLocator implements ServiceLocator {
-    private Map<Object, Factory> serviceMap = new HashMap<>();
-    private Map<Object, Object> constantMap = new HashMap<>();
+    private Map<Class, Factory> serviceMap = new HashMap<>();
+    private Map<Class, Object> constantMap = new HashMap<>();
 
     @Override
     public <T> void setService(Class<T> klass, Factory<T> factory) throws LocatorError {
