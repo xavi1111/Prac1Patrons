@@ -16,7 +16,7 @@ public class SimpleServiceLocator implements ServiceLocator {
     @Override
     public <T> void setService(Class<T> klass, Factory<T> factory) throws LocatorError {
         if(!serviceMap.containsKey(klass))
-            serviceMap.put(klass, factory); // no ens cal fer el cast si assegurem que aixo serà de tipus t.
+            serviceMap.put(klass, factory);
         else
             throw new LocatorError();
     }
@@ -29,7 +29,10 @@ public class SimpleServiceLocator implements ServiceLocator {
             throw new  LocatorError();
     }
 
+
+
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T getObject(Class<T> klass) throws LocatorError {
         if(serviceMap.containsKey(klass))
             return (T)serviceMap.get(klass).create(this);
