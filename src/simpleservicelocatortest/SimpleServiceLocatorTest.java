@@ -15,6 +15,7 @@ import servicelocator.factories.FactoryD1;
 class SimpleServiceLocatorTest {
 
     private SimpleServiceLocator ssl;
+    private SimpleServiceLocator ss2;
     private FactoryA1 factoryA1;
     private FactoryB1 factoryB1;
     private FactoryC1 factoryC1;
@@ -65,5 +66,30 @@ class SimpleServiceLocatorTest {
         assertNotSame(ssl.getObject("B"), ssl.getObject("B"));
         assertNotSame(ssl.getObject("C"), ssl.getObject("C"));
         assertNotSame(ssl.getObject("D"), ssl.getObject("D"));
+    }
+
+    @BeforeEach
+    void initGetObjectDifferent() throws LocatorError{
+        ss2 = new SimpleServiceLocator();
+        ss2.setService("A", factoryA1);
+        ss2.setService("B", factoryB1);
+        ss2.setService("C", factoryC1);
+        ss2.setService("D", factoryD1);
+        ss2.setConstant("I", 10);
+        ss2.setConstant("S", "test2");
+    }
+
+    @Test
+    void getObjectDifferent() throws LocatorError {
+        assertNotEquals(ssl.getObject("A"), ss2.getObject("B"));
+        assertNotEquals(ssl.getObject("A"), ss2.getObject("C"));
+        assertNotEquals(ssl.getObject("A"), ss2.getObject("D"));
+        assertNotEquals(ssl.getObject("B"), ss2.getObject("C"));
+        assertNotEquals(ssl.getObject("B"), ss2.getObject("D"));
+        assertNotEquals(ssl.getObject("C"), ss2.getObject("D"));
+        assertNotSame(ssl.getObject("A"), ss2.getObject("A"));
+        assertNotSame(ssl.getObject("B"), ss2.getObject("B"));
+        assertNotSame(ssl.getObject("C"), ss2.getObject("C"));
+        assertNotSame(ssl.getObject("D"), ss2.getObject("D"));
     }
 }
