@@ -57,10 +57,42 @@ class SimpleServiceLocator2Test {
     }
 
     @Test
-    void setConstant() {
+    void setConstant() throws LocatorError {
+        assertEquals(ssl.getObject(Integer.class), 1);
+        assertThrows(LocatorError.class, () -> ssl.setConstant(Integer.class, 1));
     }
 
     @Test
-    void getObject() {
+    void getObject() throws LocatorError {
+        assertThrows(LocatorError.class, () -> ssl.getObject(Long.class));
+        assertEquals(ssl.getObject(InterfaceA.class), factoryA1.create(ssl));
+        assertEquals(ssl.getObject(InterfaceB.class), factoryB1.create(ssl));
+        assertEquals(ssl.getObject(InterfaceC.class), factoryC1.create(ssl));
+        assertEquals(ssl.getObject(InterfaceD.class), factoryD1.create(ssl));
+        assertNotEquals(ssl.getObject(InterfaceA.class), ssl.getObject(InterfaceB.class));
+        assertNotEquals(ssl.getObject(InterfaceA.class), ssl.getObject(InterfaceC.class));
+        assertNotEquals(ssl.getObject(InterfaceA.class), ssl.getObject(InterfaceD.class));
+        assertNotEquals(ssl.getObject(InterfaceB.class), ssl.getObject(InterfaceC.class));
+        assertNotEquals(ssl.getObject(InterfaceB.class), ssl.getObject(InterfaceD.class));
+        assertNotEquals(ssl.getObject(InterfaceC.class), ssl.getObject(InterfaceD.class));
+        assertNotSame(ssl.getObject(InterfaceA.class), ssl.getObject(InterfaceA.class));
+        assertNotSame(ssl.getObject(InterfaceB.class), ssl.getObject(InterfaceB.class));
+        assertNotSame(ssl.getObject(InterfaceC.class), ssl.getObject(InterfaceC.class));
+        assertNotSame(ssl.getObject(InterfaceD.class), ssl.getObject(InterfaceD.class));
+    }
+
+
+    @Test
+    void getObjectDifferent() throws LocatorError {
+        assertNotEquals(ssl.getObject(InterfaceA.class), ssl2.getObject(InterfaceB.class));
+        assertNotEquals(ssl.getObject(InterfaceA.class), ssl2.getObject(InterfaceC.class));
+        assertNotEquals(ssl.getObject(InterfaceA.class), ssl2.getObject(InterfaceD.class));
+        assertNotEquals(ssl.getObject(InterfaceB.class), ssl2.getObject(InterfaceC.class));
+        assertNotEquals(ssl.getObject(InterfaceB.class), ssl2.getObject(InterfaceD.class));
+        assertNotEquals(ssl.getObject(InterfaceC.class), ssl2.getObject(InterfaceD.class));
+        assertNotSame(ssl.getObject(InterfaceA.class), ssl2.getObject(InterfaceA.class));
+        assertNotSame(ssl.getObject(InterfaceB.class), ssl2.getObject(InterfaceB.class));
+        assertNotSame(ssl.getObject(InterfaceC.class), ssl2.getObject(InterfaceC.class));
+        assertNotSame(ssl.getObject(InterfaceD.class), ssl2.getObject(InterfaceD.class));
     }
 }
